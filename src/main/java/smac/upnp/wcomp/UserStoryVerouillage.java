@@ -30,6 +30,7 @@ public class UserStoryVerouillage
 			pause(1000);
 
 			ActionStoryVerouillage actionStoryVerouillage = new ActionStoryVerouillage();
+			ActionStoryVerouillageRemote actionStoryVerouillageRemote = new ActionStoryVerouillageRemote();
 			pause(5000);
 
 			actionStoryVerouillage.setValeur("50");
@@ -40,7 +41,7 @@ public class UserStoryVerouillage
 
 			pause(2000);
 
-			/*actionStoryVerouillage.verouille();
+			actionStoryVerouillageRemote.verouille();
 
 			actionStoryVerouillage.setValeur("0");
 
@@ -50,11 +51,11 @@ public class UserStoryVerouillage
 
 			pause(2000);
 
-			actionStoryVerouillage.verouille();
+			actionStoryVerouillageRemote.verouille();
 
 			pause(2000);
 
-			actionStoryVerouillage.setValeur("0");*/
+			actionStoryVerouillage.setValeur("0");
 
 
 

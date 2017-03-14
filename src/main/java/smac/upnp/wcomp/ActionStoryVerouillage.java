@@ -32,24 +32,5 @@ public class ActionStoryVerouillage extends Spy {
 	}
 
 
-	public void verouille() throws ErrorContainer, NoDevice, NoService, NotLaunched {
-		try {
 
-			this.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", (HashMap<String, Object>) new HashMap<String, Object>().put("CENTRE","CENTRE"));
-			this.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", (HashMap<String, Object>) new HashMap<String, Object>().put("AUCUN","AUCUN"));
-
-                // SI NON PARAM
-                //super.launchAction(serviceId,actionName, null);
-		} catch (InvalidValueException e) {
-			throw new ErrorContainer("Wrong value");
-		} catch (NoDevice e) {
-			throw e;
-		} catch (NoService e) {
-			throw e;
-		} catch (NotLaunched e) {
-			throw e;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
