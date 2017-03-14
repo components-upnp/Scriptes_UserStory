@@ -1,25 +1,25 @@
 package smac.upnp.wcomp;
 
-public class App 
+public class UserStoryVerouillage
 {
     public static void main( String[] args )
     {
     	// Vérifier nom Container
-        ContainerWComp c = new ContainerWComp("args[0]");
+        ContainerWComp c = new ContainerWComp("container1_Structural_0");
         
         try {
         	pause(3000);
         	//AndroidRemote
-        	String androidRemote = c.createBeanAtPos("Android Remote Controller", "urn:schemas-upnp-org:device:RemoteController:1", 400, 200);
+        	String androidRemote = c.createBeanAtPos("Android Remote Controller", "WComp.UPnPDevice.Android_Remote_Controller", 400, 200);
 
         	pause(3000);
         	//Android Slider
-        	String androidSlider = c.createBeanAtPos("Android Remote Slider Controller", "urn:schemas-upnp-org:device:RemoteSliderController:1", 300, 100);
+        	String androidSlider = c.createBeanAtPos("Android Remote Slider Controller", "WComp.UPnPDevice.Android_Remote_Slider_Controller", 300, 100);
 
 
         	pause(3000);
         	//Ampoule
-        	String ampoule = c.createBeanAtPos("Ampoule (simulation)", "urn:schemas-upnp-org:device:Ampoule:1", 600, 300);
+        	String ampoule = c.createBeanAtPos("Ampoule (simulation)", "WComp.UPnPDevice.Ampoule__simulation_", 600, 300);
 
         	pause(1000);
 			String linkRemote1 = c.createLink("Android Remote Controller", "Status_Event", "Ampoule (simulation)", "SetTarget", "");
@@ -30,30 +30,31 @@ public class App
 			pause(1000);
 
 			ActionStoryVerouillage actionStoryVerouillage = new ActionStoryVerouillage();
+			pause(5000);
 
-			actionStoryVerouillage.SetValeur("50");
+			actionStoryVerouillage.setValeur("50");
 
 			pause(2000);
 
-			actionStoryVerouillage.SetValeur("100");
+			actionStoryVerouillage.setValeur("100");
+
+			pause(2000);
+
+			/*actionStoryVerouillage.verouille();
+
+			actionStoryVerouillage.setValeur("0");
+
+			pause(2000);
+
+			actionStoryVerouillage.setValeur("50");
 
 			pause(2000);
 
 			actionStoryVerouillage.verouille();
 
-			actionStoryVerouillage.SetValeur("0");
-
 			pause(2000);
 
-			actionStoryVerouillage.SetValeur("50");
-
-			pause(2000);
-
-			actionStoryVerouillage.verouille();
-
-			pause(2000);
-
-			actionStoryVerouillage.SetValeur("0");
+			actionStoryVerouillage.setValeur("0");*/
 
 
 
@@ -69,12 +70,9 @@ public class App
 		} catch (ErrorContainer e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SpyNotRunning e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
-    }
+	}
     
     public static void pause(long ms){
         try {

@@ -1,11 +1,21 @@
+package smac.upnp.wcomp;
+
+import org.fourthline.cling.model.types.InvalidValueException;
+import smac.upnp.wcomp.Spy;
+
+import java.util.HashMap;
+
 public class ActionStoryVerouillage extends Spy {
 	public ActionStoryVerouillage() {
-		super();
-	}
+		super("Android Remote Slider Controller");
+    }
 
-	public void setValeur(String val) {
+	public void setValeur(String val) throws ErrorContainer, NoDevice, NotLaunched, NoService {
 		try {
-		super.launchAction("urn:upnp-org:serviceId:SliderController","SetTarget", val);
+			System.out.println("launch SetTarget");
+			HashMap<String,Object> arg = new HashMap<String, Object>();
+			arg.put("NewTargetValue",val);
+		this.launchAction("SliderController","SetTarget", arg);
                 // SI NON PARAM
                 //super.launchAction(serviceId,actionName, null);
 		} catch (InvalidValueException e) {
@@ -16,14 +26,17 @@ public class ActionStoryVerouillage extends Spy {
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 
-	public void verouille() {
+	public void verouille() throws ErrorContainer, NoDevice, NoService, NotLaunched {
 		try {
-		super.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", "CENTRE");
-		super.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", "AUCUN");
+
+			this.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", (HashMap<String, Object>) new HashMap<String, Object>().put("CENTRE","CENTRE"));
+			this.launchAction("urn:upnp-org:serviceId:RemoteController","SetTarget", (HashMap<String, Object>) new HashMap<String, Object>().put("AUCUN","AUCUN"));
 
                 // SI NON PARAM
                 //super.launchAction(serviceId,actionName, null);
@@ -35,6 +48,8 @@ public class ActionStoryVerouillage extends Spy {
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
