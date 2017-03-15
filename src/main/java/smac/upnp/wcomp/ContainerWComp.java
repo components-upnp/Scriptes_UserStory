@@ -35,7 +35,7 @@ public class ContainerWComp extends Spy{
 	 */
 	public String createBean(String beanName ,String beanType) 
 			throws NoDevice, NoService, NotLaunched, ErrorContainer {
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		
 		String actionName = "CreateBean";
 		arg.put("beanType", beanType);
@@ -62,8 +62,11 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
+
+		return "";
 	}
 	
 	/**
@@ -81,7 +84,7 @@ public class ContainerWComp extends Spy{
 	 */
 	public String createBeanAtPos(String beanName ,String beanType, int x, int y) 
 			throws NoDevice, ErrorContainer, NoService, NotLaunched {
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		
 		String actionName = "CreateBeanAtPos";
 		arg.put("beanType", beanType);
@@ -111,7 +114,10 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return "";
 	}
 	
 	/**
@@ -126,7 +132,7 @@ public class ContainerWComp extends Spy{
 			throws NoDevice, ErrorContainer, NoService, NotLaunched {
 		String actionName = "RemoveBean";
 		
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("instName", instName);
 		
 		try {
@@ -139,6 +145,8 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -161,7 +169,7 @@ public class ContainerWComp extends Spy{
 			throws NoDevice, ErrorContainer, NoService, NotLaunched {
 		String actionName = "CreateLink";
 		
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("source", source);
 		arg.put("srcEvent", srcEvent);
 		arg.put("destination", destination);
@@ -179,7 +187,10 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return "";
 	}
 	
 	/**
@@ -194,7 +205,7 @@ public class ContainerWComp extends Spy{
 			throws NoDevice, ErrorContainer, NoService, NotLaunched {
 		String actionName = "RemoveLink";
 		
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("linkName", linkName);
 		
 		try {
@@ -207,6 +218,8 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -243,7 +256,10 @@ public class ContainerWComp extends Spy{
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return new String[]{"", ""};
 	}
 	
 	/**
@@ -280,7 +296,10 @@ public String[] getBeans()
 		throw e;
 	} catch (NotLaunched e) {
 		throw e;
+	} catch (Exception e) {
+		e.printStackTrace();
 	}
+	return new String[]{"", ""};
 }
 	
 	/**
@@ -298,7 +317,7 @@ public String[] getBeans()
 		
 		String actionName = "MoveBean";
 		
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("beanName", beanName);
 		arg.put("x", x);
 		arg.put("y", y);
@@ -313,6 +332,8 @@ public String[] getBeans()
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -333,7 +354,7 @@ public String[] getBeans()
 		
 		String actionName = "SetPropertyValue";
 		
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("instName", instName);
 		arg.put("propName", propName);
 		arg.put("propValue", propValue);
@@ -348,6 +369,8 @@ public String[] getBeans()
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -366,7 +389,7 @@ public String[] getBeans()
 			throws NoDevice, ErrorContainer, NoService, NotLaunched {
 		String actionName = "GetPropertyValue";
 	
-		HashMap<String, Object> arg = new HashMap<>();
+		HashMap<String, Object> arg = new HashMap();
 		arg.put("instName", instName);
 		arg.put("propName", propName);
 		
@@ -398,6 +421,9 @@ public String[] getBeans()
 			throw e;
 		} catch (NotLaunched e) {
 			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return "";
 	}
 }

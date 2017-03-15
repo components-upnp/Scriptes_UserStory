@@ -14,6 +14,8 @@ import org.fourthline.cling.model.meta.*;
 import org.fourthline.cling.model.types.*;
 import org.fourthline.cling.registry.*;
 
+import static smac.upnp.wcomp.App.pause;
+
 /**
  * Class that connects to a Upnp device from his friendly name.
  * @author tbille
@@ -38,20 +40,28 @@ public class Spy {
 
 		try {
 			runSpy();
+			Thread.sleep(1000);
 		} catch (SpyAlreadyRunning e1) {
 			e1.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
 		while(getDevice()==null){
 			try {
-				Thread.sleep(1);
+				System.out.println("No device");
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		this.device = this.getDevice();
 	}
-	
-	/**
+
+    public Spy() {
+    }
+
+    /**
 	 * Method that launches the spy. If the spy is already running : it stops it and launches a new spy.
 	 */
 	public void runSpy() throws SpyAlreadyRunning{
@@ -187,8 +197,8 @@ public class Spy {
 	 * @throws NoDevice
 	 * @throws NoService
 	 */
-	public ArrayList<Object> launchAction(String serviceId, String actionName, HashMap<String, Object> arg) 
-			throws InvalidValueException, NoDevice, NoService, NotLaunched{
+	public ArrayList<Object> launchAction(String serviceId, String actionName, HashMap<String, Object> arg)
+			throws Exception {
 		System.out.println("------------------START try Action " + actionName);
 		
 		// Control if the spy is running
@@ -215,7 +225,7 @@ public class Spy {
 			
 			return resultats;
 		}
-		catch(InvalidValueException ex){
+		catch(Exception ex){
 			throw ex;
 		}
 		
@@ -243,7 +253,7 @@ public class Spy {
 		                    public void success(ActionInvocation invocation) {
 		                        System.out.println("Successfully called action!");
 		                        if(invocation.getOutput().length>0){
-			                        resultats = new ArrayList<>();
+			                        resultats = new ArrayList();
 			                        for (ActionArgumentValue<?> object : invocation.getOutput()) {
 										resultats.add(object.getValue());
 									}
@@ -285,7 +295,9 @@ public class Spy {
 	        		// set input for all arguments of the upnp method
 		        	for (String mapKey : arg.keySet()) {
 		        		System.out.println(mapKey + " "+ arg.get(mapKey));
-		        		setInput(mapKey, arg.get(mapKey));
+						System.out.println(mapKey + " "+ arg.get(mapKey));
+
+						setInput(mapKey, arg.get(mapKey));
 		        	}
 	        	}
 	        } catch (InvalidValueException ex) {
