@@ -1,12 +1,14 @@
-package smac.upnp.wcomp;
+package smac.upnp.wcomp.creativeTech;
+
+import smac.upnp.wcomp.*;
 
 public class UserStoryVerouillage
 {
     public static void main( String[] args )
     {
     	// Vérifier nom Container
-        ContainerWComp c = new ContainerWComp("container1_Structural_0");
-        
+        ContainerWComp c = new ContainerWComp(args[0]);
+
         try {
         	pause(3000);
         	//AndroidRemote
