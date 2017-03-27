@@ -14,13 +14,9 @@ public class ActionDetecterMouvement extends Spy{
         try {
 
             HashMap<String,Object> arg = new HashMap<String, Object>();
-            arg.put("NewTargetValue","CENTRE");
-
-            this.launchAction("RemoteController","SetTarget", arg);
+            arg.put("NewTargetValue","0");
             arg.remove("NewTargetValue");
-            arg.put("NewTargetValue","AUCUN");
-            this.launchAction("RemoteController","SetTarget", arg);
-
+            this.launchAction("MotionDetectorService","SetTarget", arg);
         } catch (InvalidValueException e) {
             throw new ErrorContainer("Wrong value");
         } catch (NoDevice e) {

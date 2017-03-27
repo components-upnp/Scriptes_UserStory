@@ -11,7 +11,7 @@ public class UserStoryAdaptationLumineuse {
     public static void main( String[] args )
     {
         // Vérifier nom Container
-        ContainerWComp containerWComp = new ContainerWComp(args[0]);
+        ContainerWComp containerWComp = new ContainerWComp("MyContainer_Structural_0");
 
         try {
             pause(2000);

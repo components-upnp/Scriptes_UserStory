@@ -9,12 +9,12 @@ public class UserStoryDetecteurMouvement {
     public static void main( String[] args )
     {
         // Vérifier nom Container
-        ContainerWComp containerWComp = new ContainerWComp(args[0]);
+        ContainerWComp containerWComp = new ContainerWComp("MyContainer_Structural_0");
 
         try {
             pause(2000);
             //Detecteur de mouvement
-            String lumiere = containerWComp.createBeanAtPos("Motion Dector","WComp.UPnPDevice.motion_Detector1",400, 200);
+            String lumiere = containerWComp.createBeanAtPos("Motion Detector","WComp.UPnPDevice.Motion_Detector",400, 200);
 
             pause(3000);
             //la lumière
@@ -23,9 +23,10 @@ public class UserStoryDetecteurMouvement {
             pause(1000);
             String linkRemote1 = containerWComp.createLink("Motion Detector", "Status_Event", "Ampoule (simulation)", "SetTarget", "");
 
-            ActionDetecterMouvement actionAdaptationLumineuse = new ActionDetecterMouvement();
+            ActionDetecterMouvement actionDetecterMouvement = new ActionDetecterMouvement();
 
-            actionAdaptationLumineuse.adapterLumiere();
+            pause(2000);
+            actionDetecterMouvement.adapterLumiere();
 
             containerWComp.stopSpy();
         } catch (NoDevice e) {
