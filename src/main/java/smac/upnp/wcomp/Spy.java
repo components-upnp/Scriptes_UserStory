@@ -210,9 +210,9 @@ public class Spy {
 		// Control if the service exists in the device
 		Service<?, ?> myService;
 		ServiceId serviceIdentificator = new UDAServiceId(serviceId);
+		System.out.println(serviceIdentificator);
 		if ((myService = device.findService(serviceIdentificator)) == null)
 			throw new NoService(serviceId, friendlyName);
-		
 		try{
 			// Launch action
 			Future<?> f = executeAction(upnpService, myService, actionName, arg);
