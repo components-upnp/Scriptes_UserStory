@@ -21,12 +21,24 @@ public class UserStoryDetecteurMouvement {
             String ampoule = containerWComp.createBeanAtPos("Ampoule (simulation)", "WComp.UPnPDevice.Ampoule__simulation_", 600, 300);
 
             pause(1000);
-            String linkRemote1 = containerWComp.createLink("Motion Detector", "Status_Event", "Ampoule (simulation)", "SetTarget", "");
+            String link = containerWComp.createLink("Motion Detector", "Status_Event", "Ampoule (simulation)", "SetValeur", "");
 
             ActionDetecterMouvement actionDetecterMouvement = new ActionDetecterMouvement();
 
             pause(2000);
-            actionDetecterMouvement.adapterLumiere();
+            actionDetecterMouvement.detecterMouvement("0");
+
+            pause(2000);
+            actionDetecterMouvement.detecterMouvement("50");
+
+            pause(2000);
+            actionDetecterMouvement.detecterMouvement("69");
+
+            pause(2000);
+            actionDetecterMouvement.detecterMouvement("12");
+
+            pause(2000);
+            actionDetecterMouvement.detecterMouvement("80");
 
             containerWComp.stopSpy();
         } catch (NoDevice e) {
@@ -44,7 +56,6 @@ public class UserStoryDetecteurMouvement {
         } catch (SpyNotRunning spyNotRunning) {
             spyNotRunning.printStackTrace();
         }
-
     }
 
     public static void pause(long ms){

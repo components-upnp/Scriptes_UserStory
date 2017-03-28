@@ -29,6 +29,23 @@ public class UserStoryAdaptationLumineuse {
 
             actionAdaptationLumineuse.adapterLumiere("50");
 
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("0");
+
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("40");
+
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("80");
+
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("100");
+
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("10");
+
+            pause(2000);
+            actionAdaptationLumineuse.adapterLumiere("60");
             containerWComp.stopSpy();
         } catch (NoDevice e) {
             // TODO Auto-generated catch block

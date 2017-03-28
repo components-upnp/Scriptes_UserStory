@@ -9,13 +9,15 @@ import java.util.HashMap;
  * Created by Abdourahamane Ly on 27/03/2017.
  */
 public class ActionDetecterMouvement extends Spy{
+    public ActionDetecterMouvement() {
+        super("Motion Detector");
+    }
 
-    public void adapterLumiere() throws ErrorContainer, NoDevice, NoService, NotLaunched {
+    public void detecterMouvement(String val) throws ErrorContainer, NoDevice, NoService, NotLaunched {
         try {
 
             HashMap<String,Object> arg = new HashMap<String, Object>();
-            arg.put("NewTargetValue","0");
-            arg.remove("NewTargetValue");
+            arg.put("NewTargetValue",val);
             this.launchAction("MotionDetectorService","SetTarget", arg);
         } catch (InvalidValueException e) {
             throw new ErrorContainer("Wrong value");
