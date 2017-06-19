@@ -36,6 +36,7 @@ public class Vote {
         // Vérifier nom Container
         ContainerWComp c = new ContainerWComp("container_Structural_0");
         String namePollingStation = "";
+        String nameAdapter = "";
 
         try {
 
@@ -108,6 +109,14 @@ public class Vote {
                         pause(1000);
 
                         String link = c.createLink(namePollingStation, "Reponses_Event", beanProperties[0], "SetVotes", "");
+                    }
+
+                    if (bean.contains("Int_To")) {
+                        nameAdapter = beanProperties[0];
+                        String link1 = c.createLink(beanProperties[0], "Commande_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
+                    }
+                    if (bean.contains("Remote_Slider_Controller")) {
+                        String link = c.createLink(beanProperties[0], "Status_Event", nameAdapter, "SetCommandInt","");
                     }
                     beansConnected.add(bean);
                // }
