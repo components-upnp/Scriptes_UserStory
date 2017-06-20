@@ -12,6 +12,8 @@ import java.util.TimerTask;
 public class Vote {
 
     private static ArrayList<String> beansConnected = new ArrayList<>();
+    private static String nameAdapter = "";
+    private static String namePollingStation = "";
 
     public static void main(String[] args) {
 
@@ -27,16 +29,16 @@ public class Vote {
                     }
                 },
                 3000,
-                60000
+                20000
         );
     }
+
+
 
     public static void connect() {
 
         // Vérifier nom Container
         ContainerWComp c = new ContainerWComp("container_Structural_0");
-        String namePollingStation = "";
-        String nameAdapter = "";
 
         try {
 
@@ -59,21 +61,21 @@ public class Vote {
                     String beanProperties[] = bean.split(":");
                     if (bean.contains("Android_Remote_Controller")) {
                         String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                        pause(1000);
+                        pause(500);
 
                         //Creation du lien
                         String linkCommande = c.createLink(beanProperties[0], "Status_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
-                        pause(1000);
+                        pause(500);
 
                     }
                     if (bean.contains("Vote_Remote_Control")) {
                         //Ampoule
                         String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                        pause(1000);
+                        pause(500);
 
                         //Creation du lien
                         String linkCommande = c.createLink(beanProperties[0], "Commande_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
-                        pause(1000);
+                        pause(500);
 
                         String linkQuestion = c.createLink(namePollingStation, "Question_Event", beanProperties[0], "questionNotif", "");
 
@@ -82,40 +84,40 @@ public class Vote {
                     if (bean.contains("Accelerometer")) {
                         //Ampoule
                         String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                        pause(1000);
+                        pause(500);
 
                         //Creation du lien
                         String linkCommande = c.createLink(beanProperties[0], "Direction_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
-                        pause(1000);
+                        pause(500);
                         String linkUdn = c.createLink(beanProperties[0], "Udn_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
-                        pause(1000);
+                        pause(500);
                         String linkPoto = c.createLink(namePollingStation, "Question_Event", beanProperties[0], "questionNotif", "");
-                        pause(1000);
+                        pause(500);
                     }
 
                     if (bean.contains("IHM_Polling_Station")) {
                         String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                        pause(1000);
+                        pause(500);
 
                         String linkCommande = c.createLink(beanProperties[0], "CommandeToSend_Event", namePollingStation, "SetCommande", "");
-                        pause(1000);
+                        pause(500);
 
                         String linkQuestion = c.createLink(beanProperties[0], "QuestionToSend_Event", namePollingStation, "SetQuestion", "");
-                        pause(1000);
+                        pause(500);
                     }
 
                     if (bean.contains("Generateur_de_rapport")) {
                         String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                        pause(1000);
+                        pause(500);
 
                         String link = c.createLink(namePollingStation, "Reponses_Event", beanProperties[0], "SetVotes", "");
                     }
 
                     if (bean.contains("Int_To")) {
                         nameAdapter = beanProperties[0];
-                        String link1 = c.createLink(beanProperties[0], "Commande_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
+                        String link1 = c.createLink(nameAdapter, "Commande_Event", namePollingStation, "_upnporgIdVoteService_SetCommande", "");
                     }
-                    if (bean.contains("Remote_Slider_Controller")) {
+                    if (bean.contains("Slider")) {
                         String link = c.createLink(beanProperties[0], "Status_Event", nameAdapter, "SetCommandInt","");
                     }
                     beansConnected.add(bean);
@@ -124,7 +126,7 @@ public class Vote {
 
 
 
-            pause(3000);
+            pause(1000);
             c.stopSpy();
         } catch (NoService noService) {
             noService.printStackTrace();
