@@ -2,6 +2,9 @@ package scriptsDemos;
 
 import smac.upnp.wcomp.*;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by mkostiuk on 22/05/2017.
  */
@@ -9,6 +12,16 @@ public class RemoteControlPdf {
 
     public static void main(String[] args) {
 
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                connect();
+            }
+        }, 3000, 20000);
+
+    }
+
+    public static void connect() {
         String namePdf = "";
         int nb = 1;
         // Vérifier nom Container
@@ -26,21 +39,21 @@ public class RemoteControlPdf {
                 }
             }
 
-           for (String bean : beans) {
+            for (String bean : beans) {
 
 
                 String beanProperties[] = bean.split(":");
                 if (bean.contains("android_Remote_Controller")) {
-                    //Ampoule
-                    String ampoule = c.createBeanAtPos(beanProperties[0], beanProperties[1], 600, 300);
-                    pause(1000);
+
 
                     //Creation du lien
-                    String linkPoto = c.createLink(beanProperties[0], "Status_Event", namePdf, "SetTarget", "");
+                    String linkPoto = c.createLink(beanProperties[0], "Status_Event", namePdf, "SetCommande", "");
                     pause(1000);
                 }
 
-
+                if (bean.contains(("Accelerometer"))) {
+                    String linkCommande = c.createLink(beanProperties[0], "Direction_Event", namePdf, "SetCommande", "");
+                }
 
             }
 
