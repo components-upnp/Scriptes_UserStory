@@ -23,6 +23,7 @@ public class RemoteControlPdf {
 
     public static void connect() {
         String namePdf = "";
+        String nameAdapter = "";
         int nb = 1;
         // Vérifier nom Container
         ContainerWComp c = new ContainerWComp("container_Structural_0");
@@ -53,6 +54,15 @@ public class RemoteControlPdf {
 
                 if (bean.contains(("Accelerometer"))) {
                     String linkCommande = c.createLink(beanProperties[0], "Direction_Event", namePdf, "SetCommande", "");
+                }
+
+                if (bean.contains("Arduino_Adapter")) {
+                    nameAdapter = beanProperties[0];
+                    String linkCommand = c.createLink(nameAdapter, "AdaptedCommand_Event", namePdf, "SetCommande", "");
+                }
+
+                if (bean.contains("BUTTONS")) {
+                    String linkCommand = c.createLink(beanProperties[0], "Status_Event", nameAdapter, "SetArduinoCommand", "");
                 }
 
             }
