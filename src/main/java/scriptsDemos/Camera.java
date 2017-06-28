@@ -2,12 +2,32 @@ package scriptsDemos;
 
 import smac.upnp.wcomp.*;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by mkostiuk on 31/05/2017.
  */
 public class Camera {
 
     public static void main(String[] args) {
+        //Mise en place d'un Timer oour relancer le script d'assemblage toutes les minutes
+        Timer timer = new Timer();
+
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        connect();
+                    }
+                },
+                3000,
+                20000
+        );
+
+    }
+
+    public static void connect() {
         ContainerWComp c = new ContainerWComp("container_Structural_0");
         String nameAdapter = "";
 
@@ -60,7 +80,6 @@ public class Camera {
         } catch (ErrorContainer errorContainer) {
             errorContainer.printStackTrace();
         }
-
     }
 
     public static void pause(long ms){
