@@ -1,6 +1,7 @@
-package scriptsDemos;
+package main.java.scriptsDemos;
 
-import smac.upnp.wcomp.*;
+
+import main.java.smac.upnp.wcomp.*;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,9 +9,9 @@ import java.util.TimerTask;
 /**
  * Created by mkostiuk on 22/05/2017.
  */
-public class RemoteControlPdf {
+public class RemoteControlPdf implements Runnable {
 
-    public static void main(String[] args) {
+    public void run() {
 
         new Timer().schedule(new TimerTask() {
             @Override
@@ -21,7 +22,7 @@ public class RemoteControlPdf {
 
     }
 
-    public static void connect() {
+    public void connect() {
         String namePdf = "";
         String nameAdapter = "";
         int nb = 1;
@@ -37,6 +38,9 @@ public class RemoteControlPdf {
                 String beanProperties[] = bean.split(":");
                 if (bean.contains("lecteur_PDF")) {
                     namePdf = beanProperties[0];
+                }
+                if (bean.contains("Arduino_Adapter")) {
+                    nameAdapter = beanProperties[0];
                 }
             }
 
@@ -57,7 +61,6 @@ public class RemoteControlPdf {
                 }
 
                 if (bean.contains("Arduino_Adapter")) {
-                    nameAdapter = beanProperties[0];
                     String linkCommand = c.createLink(nameAdapter, "AdaptedCommand_Event", namePdf, "SetCommande", "");
                 }
 

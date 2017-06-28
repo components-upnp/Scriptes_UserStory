@@ -1,6 +1,7 @@
-package scriptsDemos;
+package main.java.scriptsDemos;
 
-import smac.upnp.wcomp.*;
+
+import main.java.smac.upnp.wcomp.*;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,9 +9,9 @@ import java.util.TimerTask;
 /**
  * Created by mkostiuk on 31/05/2017.
  */
-public class Camera {
+public class Camera implements Runnable {
 
-    public static void main(String[] args) {
+    public void run() {
         //Mise en place d'un Timer oour relancer le script d'assemblage toutes les minutes
         Timer timer = new Timer();
 
@@ -27,7 +28,7 @@ public class Camera {
 
     }
 
-    public static void connect() {
+    public void connect() {
         ContainerWComp c = new ContainerWComp("container_Structural_0");
         String nameAdapter = "";
 
@@ -61,6 +62,10 @@ public class Camera {
                     //Creation du lien
                     String linkPoto = c.createLink(beanProperties[0], "Status_Event", nameAdapter, "SetCommande", "");
                     pause(1000);
+                }
+
+                if (bean.contains("Orientation")) {
+                    String linkPoto = c.createLink(beanProperties[0], "Commande_Event", nameAdapter, "SetOrientationCommand", "");
                 }
 
 

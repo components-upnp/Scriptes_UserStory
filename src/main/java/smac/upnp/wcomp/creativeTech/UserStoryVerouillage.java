@@ -1,6 +1,7 @@
-package smac.upnp.wcomp.creativeTech;
+package main.java.smac.upnp.wcomp.creativeTech;
 
-import smac.upnp.wcomp.*;
+
+import main.java.smac.upnp.wcomp.*;
 
 public class UserStoryVerouillage
 {

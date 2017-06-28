@@ -1,14 +1,14 @@
-package smac.upnp.wcomp.creativeTechSP3;
+package main.java.smac.upnp.wcomp.creativeTechSP3;
 
+import main.java.smac.upnp.wcomp.*;
 import org.fourthline.cling.model.types.InvalidValueException;
-import smac.upnp.wcomp.*;
 
 import java.util.HashMap;
 
 /**
  * Created by Abdourahamane Ly on 27/03/2017.
  */
-public class ActionDetecterMouvement extends Spy{
+public class ActionDetecterMouvement extends Spy {
     public ActionDetecterMouvement() {
         super("Motion Detector");
     }

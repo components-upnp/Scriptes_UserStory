@@ -1,4 +1,4 @@
-package smac.upnp.wcomp;
+package test.java.smac.upnp.wcomp;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

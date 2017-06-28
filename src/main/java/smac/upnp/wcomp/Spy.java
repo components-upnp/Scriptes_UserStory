@@ -1,4 +1,4 @@
-package smac.upnp.wcomp;
+package main.java.smac.upnp.wcomp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,6 @@ import org.fourthline.cling.model.meta.*;
 import org.fourthline.cling.model.types.*;
 import org.fourthline.cling.registry.*;
 
-import static smac.upnp.wcomp.App.pause;
 
 /**
  * Class that connects to a Upnp device from his friendly name.

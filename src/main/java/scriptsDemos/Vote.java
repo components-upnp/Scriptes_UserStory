@@ -1,6 +1,7 @@
-package scriptsDemos;
+package main.java.scriptsDemos;
 
-import smac.upnp.wcomp.*;
+
+import main.java.smac.upnp.wcomp.*;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -9,13 +10,13 @@ import java.util.TimerTask;
 /**
  * Created by mkostiuk on 23/05/2017.
  */
-public class Vote {
+public class Vote implements  Runnable {
 
-    private static ArrayList<String> beansConnected = new ArrayList<>();
-    private static String nameAdapter = "";
-    private static String namePollingStation = "";
+    private ArrayList<String> beansConnected = new ArrayList<>();
+    private String nameAdapter = "";
+    private String namePollingStation = "";
 
-    public static void main(String[] args) {
+    public void run() {
 
 
         //Mise en place d'un Timer oour relancer le script d'assemblage toutes les minutes
@@ -35,7 +36,7 @@ public class Vote {
 
 
 
-    public static void connect() {
+    public void connect() {
 
         // Vérifier nom Container
         ContainerWComp c = new ContainerWComp("container_Structural_0");

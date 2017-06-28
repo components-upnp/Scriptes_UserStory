@@ -1,4 +1,4 @@
-package smac.upnp.wcomp;
+package main.java.smac.upnp.wcomp;
 
 public class AlreadyRunning extends Exception{
 

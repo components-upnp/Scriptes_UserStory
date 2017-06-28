@@ -1,7 +1,7 @@
-package smac.upnp.wcomp.creativeTech;
+package main.java.smac.upnp.wcomp.creativeTech;
 
+import main.java.smac.upnp.wcomp.*;
 import org.fourthline.cling.model.types.InvalidValueException;
-import smac.upnp.wcomp.*;
 
 import java.util.HashMap;
 

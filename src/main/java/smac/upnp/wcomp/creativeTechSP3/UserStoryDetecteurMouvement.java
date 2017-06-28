@@ -1,6 +1,7 @@
-package smac.upnp.wcomp.creativeTechSP3;
+package main.java.smac.upnp.wcomp.creativeTechSP3;
 
-import smac.upnp.wcomp.*;
+
+import main.java.smac.upnp.wcomp.*;
 
 /**
  * Created by Abdourahamane Ly on 27/03/2017.
