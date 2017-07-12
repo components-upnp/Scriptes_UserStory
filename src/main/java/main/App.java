@@ -1,7 +1,8 @@
-package main.java.principale;
+package main.java.main;
 
 
 import main.java.scriptsDemos.Camera;
+import main.java.scriptsDemos.MultiplePdf;
 import main.java.scriptsDemos.RemoteControlPdf;
 import main.java.scriptsDemos.Vote;
 
@@ -16,5 +17,7 @@ public class App {
             new Camera().run();
         if (args[0].equals("Pdf"))
             new RemoteControlPdf().run();
+        if (args[0].equals("Pdf2"))
+            new MultiplePdf().run();
     }
 }

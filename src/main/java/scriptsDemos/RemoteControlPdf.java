@@ -50,7 +50,6 @@ public class RemoteControlPdf implements Runnable {
                 String beanProperties[] = bean.split(":");
                 if (bean.contains("android_Remote_Controller")) {
 
-
                     //Creation du lien
                     String linkPoto = c.createLink(beanProperties[0], "Status_Event", namePdf, "SetCommande", "");
                     pause(1000);
