@@ -87,21 +87,21 @@ public class MultiplePdf implements Runnable {
                     boolean found = false;
                     int i = 0;
                     while (!found && i < connexions.size()) {
-                        if (visionneuseRecuperateur.keySet().contains(connexions.keySet().toArray()[i]))
+                        if (visionneuseRecuperateur.keySet().contains(connexions.keySet().toArray()[i]) &&  visionneuseRecuperateur.get(connexions.keySet().toArray()[i]).equals(""))
                             found = true;
                         else
                             i++;
                     }
                     if (found) {
                         String v = (String) connexions.keySet().toArray()[i];
-                        recupAssocieVisio.put(beanProperties[0], false);
-
+                        recupAssocieVisio.put(beanProperties[0], true);
+                        System.out.println("Association entre " + v + " " + beanProperties[0]);
                         visionneuseRecuperateur.put(v,beanProperties[0]);
                     }
                 }
             }
 
-            if (bean.contains("android_Remote_Controller") ) {
+            if ((bean.contains("android_Remote_Controller") || bean.contains("Defilement")) ) {
 
                 if (master.equals(""))
                     master = beanProperties[0];
